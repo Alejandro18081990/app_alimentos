@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -49,13 +47,13 @@ class MainActivity : AppCompatActivity() {
         //Convertimos a los tipos de datos que correspondan y guardamos en variables
         val cajaNombre = nombreAlimento.text.toString()
         val cajaTipo = tipoAlimento.text.toString()
-        val cajaHidratos = cantidadHidratos.text.toString().toDouble()
-        val cajaLipidos = cantidadLipidos.text.toString().toDouble()
-        val cajaProteinas = cantidadProteinas.text.toString().toDouble()
+        val cajaHidratos = cantidadHidratos.text.toString()
+        val cajaLipidos = cantidadLipidos.text.toString()
+        val cajaProteinas = cantidadProteinas.text.toString()
 
 
         //Instancia de la clase alimento para acceder a los métodos
-        val alimento = Alimento(cajaNombre, cajaTipo, cajaHidratos, cajaLipidos, cajaProteinas)
+        val alimento = Alimento(cajaNombre, cajaTipo, cajaHidratos.toDouble(), cajaLipidos.toDouble(), cajaProteinas.toDouble())
 
         cantidadKcal.text = alimento.calculaKcal().toString() + "kCal"
         Toast.makeText(this,"Recuerde rellenar los campos",Toast.LENGTH_SHORT).show()
@@ -65,15 +63,5 @@ class MainActivity : AppCompatActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 }
