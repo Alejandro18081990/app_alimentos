@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="77dp"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="77dp"
         android:ems="10"
         android:hint="Nombre"
@@ -95,11 +95,52 @@
         android:id="@+id/botonKiloCaloria"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="70dp"
         android:text="Calcular kCal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/resultadoKcal"
+        app:layout_constraintBottom_toBottomOf="@+id/botonAnadir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/botonAnadir"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd = "70dp"
+        android:text="Guardar alimento"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonKiloCaloria"
+        app:layout_constraintBottom_toBottomOf="@+id/botonKiloCaloria"
+        />
+
+    <Button
+        android:id="@+id/botonBorrar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd = "70dp"
+        android:text="Borrar alimento"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonAnadir"
+        />
+
+    <Button
+        android:id="@+id/botonVerAlimento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd = "70dp"
+        android:text="Ver alimentos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonBorrar"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

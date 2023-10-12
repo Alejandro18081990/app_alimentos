@@ -1,15 +1,12 @@
 package com.example.appprueba
 
 import com.example.appprueba.modelo.entidades.Alimento
+import com.example.appprueba.modelo.entidades.Ingrediente
 
 class BDApp {
-    private var listaAlimentos: MutableList<Alimento> = mutableListOf()
-
-    fun getListaAlimentos(): MutableList<Alimento> {
-        return listaAlimentos
-    }
-
-    fun addAlimento(alimento: Alimento) {
-        listaAlimentos.add(alimento)
+    //COMPANION OBJECT: hace estático su contenido
+    companion object {
+        var listaAlimentos: MutableList<Alimento> = mutableListOf()
+        var listaIngredientes: MutableList<Ingrediente> = mutableListOf()
     }
 }

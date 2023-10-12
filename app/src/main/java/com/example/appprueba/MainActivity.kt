@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.appprueba.databinding.ActivityMainBinding
+import com.example.appprueba.modelo.daos.DaoAlimento
 import com.example.appprueba.modelo.entidades.Alimento
 
 class MainActivity : AppCompatActivity() {
@@ -21,30 +22,46 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cantidadLipidos: EditText
     private lateinit var cantidadProteinas: EditText
     private lateinit var cantidadKcal: TextView
+    private lateinit var alimento: Alimento
+    private lateinit var daoAlimento: DaoAlimento
+
+    //BOTONES
     private lateinit var botonCalculo: Button
+    private lateinit var botonAnadir: Button
+    private lateinit var botonBorrar: Button
+    private lateinit var botonVerAlimentos: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Asignamos las vistas a las propiedades de la clase
+        //*******************Asignamos las vistas a las propiedades de la clase**********************
         nombreAlimento = findViewById(R.id.nombreAlimento)
         tipoAlimento = findViewById(R.id.tipoAlimento)
         cantidadHidratos = findViewById(R.id.cantidadHidratos)
         cantidadLipidos = findViewById(R.id.cantidadLipidos)
         cantidadProteinas = findViewById(R.id.cantidadProteinas)
         cantidadKcal = findViewById(R.id.resultadoKcal)
+        //****************************VISTA BOTONES****************************
         botonCalculo = findViewById(R.id.botonKiloCaloria)
+        botonAnadir = findViewById(R.id.botonAnadir)
+        botonBorrar = findViewById(R.id.botonBorrar)
+        botonVerAlimentos = findViewById(R.id.botonVerAlimento)
+        //****************************INICIALIZACION DE DAOS****************************
+        daoAlimento = DaoAlimento()
+        //****************************EVENTO BOTONES*****************************
         botonCalculo.setOnClickListener { mostrarKcal() }
-
+        botonAnadir.setOnClickListener { daoAlimento.anadirAlimento(alimento) }
+        botonBorrar.setOnClickListener { daoAlimento.borrarAlimento(alimento) }
+        botonVerAlimentos.setOnClickListener { daoAlimento.verAlimentos() }
         setSupportActionBar(binding.toolbar)
 
     }
 
     private fun mostrarKcal() {
         //Convertimos a los tipos de datos que correspondan y guardamos en variables
+        //************************************************************************************
         val cajaNombre = nombreAlimento.text.toString()
         val cajaTipo = tipoAlimento.text.toString()
         val cajaHidratos = cantidadHidratos.text.toString()
@@ -53,10 +70,17 @@ class MainActivity : AppCompatActivity() {
 
 
         //Instancia de la clase alimento para acceder a los métodos
-        val alimento = Alimento(cajaNombre, cajaTipo, cajaHidratos.toDouble(), cajaLipidos.toDouble(), cajaProteinas.toDouble())
+        //********************************************************
+        alimento = Alimento(
+            cajaNombre,
+            cajaTipo,
+            cajaHidratos.toDouble(),
+            cajaLipidos.toDouble(),
+            cajaProteinas.toDouble()
+        )
 
         cantidadKcal.text = alimento.calculaKcal().toString() + "kCal"
-        Toast.makeText(this,"Recuerde rellenar los campos",Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Recuerde rellenar los campos", Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
