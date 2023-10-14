@@ -15,7 +15,7 @@ class DaoAlimento {
 
     fun verAlimentos() {
         for (alimento in BDApp.listaAlimentos) {
-            println(alimento)
+            println(alimento.toString())
         }
     }
 

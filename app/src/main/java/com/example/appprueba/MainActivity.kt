@@ -80,6 +80,12 @@ class MainActivity : AppCompatActivity() {
         )
 
         cantidadKcal.text = alimento.calculaKcal().toString() + "kCal"
+        //****************Borrado de contenido de las cajas de texto********************
+        nombreAlimento.setText("")
+        tipoAlimento.setText("")
+        cantidadHidratos.setText("")
+        cantidadLipidos.setText("")
+        cantidadProteinas.setText("")
         Toast.makeText(this, "Recuerde rellenar los campos", Toast.LENGTH_SHORT).show()
     }
 

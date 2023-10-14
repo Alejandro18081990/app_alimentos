@@ -1,0 +1,41 @@
+package com.example.appprueba.modelo.daos
+
+import android.widget.Toast
+import com.example.appprueba.BDApp
+import com.example.appprueba.MainActivity
+import com.example.appprueba.modelo.entidades.Ingrediente
+import com.example.appprueba.modelo.interfacesDaos.InterfaceDaoIngrediente
+
+class DaoIngrediente : InterfaceDaoIngrediente {
+
+
+    override fun anadirIngrediente(ingr: Ingrediente) {
+        if (ingr == null)
+            println("Ingrediente incorrecto")
+        else
+            BDApp.listaIngredientes.add(ingr)
+    }
+
+    override fun borrarIngrediente(ingr: Ingrediente) {
+        if (ingr !in BDApp.listaIngredientes)
+            println("El ingrediente a borrar no ha sido encontrado")
+        else if (ingr == null)
+            println("Ingrediente incorrecto")
+        else
+            BDApp.listaIngredientes.remove(ingr)
+    }
+
+    override fun modificarIngrediente(oldIngr: Ingrediente, newIngr: Ingrediente) {
+        if (oldIngr == null || newIngr == null)
+            println("Ingredientes introducidos incorrectos")
+        else if (oldIngr !in BDApp.listaIngredientes)
+            println("El ingrediente a modificar no está")
+        else {
+            var indiceIngredienteModificar = BDApp.listaIngredientes.indexOf(oldIngr)
+            BDApp.listaIngredientes.set(indiceIngredienteModificar, newIngr)
+        }
+    }
+    override fun verListaIngredientes() {
+        println(BDApp.listaIngredientes.toString())
+    }
+}
