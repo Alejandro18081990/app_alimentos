@@ -1,12 +1,14 @@
 package com.example.appprueba.modelo.entidades
 
+import java.io.Serializable
+
 class Alimento(
     val nombre: String,
     val tipo: String,
     var grHc: Double,
     var grPro: Double,
     var grLip: Double
-) {
+) : Serializable {
     var listaIngredientes: MutableList<Ingrediente?> = mutableListOf(null)
 
     init {

@@ -1,8 +1,10 @@
 package com.example.appprueba.modelo.daos
 
+import android.util.Log
 import android.widget.Toast
 import com.example.appprueba.BDApp
 import com.example.appprueba.MainActivity
+import com.example.appprueba.databinding.ActivityMain2Binding
 import com.example.appprueba.modelo.entidades.Ingrediente
 import com.example.appprueba.modelo.interfacesDaos.InterfaceDaoIngrediente
 
@@ -11,7 +13,7 @@ class DaoIngrediente : InterfaceDaoIngrediente {
 
     override fun anadirIngrediente(ingr: Ingrediente) {
         if (ingr == null)
-            println("Ingrediente incorrecto")
+            Log.d("IngredienteIncorrecto", "Ingrediente incorrecto")
         else
             BDApp.listaIngredientes.add(ingr)
     }
@@ -35,6 +37,7 @@ class DaoIngrediente : InterfaceDaoIngrediente {
             BDApp.listaIngredientes.set(indiceIngredienteModificar, newIngr)
         }
     }
+
     override fun verListaIngredientes() {
         println(BDApp.listaIngredientes.toString())
     }
