@@ -10,7 +10,6 @@ import com.example.appprueba.modelo.entidades.Ingrediente
 
 class MainActivity2 : AppCompatActivity() {
 
-
     private lateinit var alimentoAct1: Alimento
     private lateinit var daoIngrediente: DaoIngrediente
     private lateinit var cantidadIngr: EditText
@@ -41,9 +40,7 @@ class MainActivity2 : AppCompatActivity() {
         if (extra != null) {
             alimentoAct1 = extra!!.getSerializable("alimento") as Alimento
             var ingrediente = Ingrediente(alimentoAct1,cantidad)
-            daoIngrediente.anadirIngrediente(ingrediente)
+            daoIngrediente.anadirIngrediente(alimentoAct1,ingrediente)
         }
     }
-
-
 }
