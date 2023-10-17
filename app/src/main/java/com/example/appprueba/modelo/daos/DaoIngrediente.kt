@@ -5,17 +5,18 @@ import android.widget.Toast
 import com.example.appprueba.BDApp
 import com.example.appprueba.MainActivity
 import com.example.appprueba.databinding.ActivityMain2Binding
+import com.example.appprueba.modelo.entidades.Alimento
 import com.example.appprueba.modelo.entidades.Ingrediente
 import com.example.appprueba.modelo.interfacesDaos.InterfaceDaoIngrediente
 
 class DaoIngrediente : InterfaceDaoIngrediente {
 
-
-    override fun anadirIngrediente(ingr: Ingrediente) {
+    //MODIFICAR MÉTODOS PARA USAR LA LISTA DE ALIMENTO
+    override fun anadirIngrediente(alimento: Alimento, ingr: Ingrediente) {
         if (ingr == null)
             Log.d("IngredienteIncorrecto", "Ingrediente incorrecto")
         else
-            BDApp.listaIngredientes.add(ingr)
+            alimento.listaIngredientes.add(ingr)
     }
 
     override fun borrarIngrediente(ingr: Ingrediente) {

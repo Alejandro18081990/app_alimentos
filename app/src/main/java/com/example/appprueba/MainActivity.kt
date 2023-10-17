@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
     private lateinit var nombreAlimento: EditText
     private lateinit var tipoAlimento: EditText
     private lateinit var cantidadHidratos: EditText
@@ -25,11 +26,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var alimento: Alimento
     private lateinit var daoAlimento: DaoAlimento
 
-    //BOTONES
+    //BOTONES DE ALIMENTOS
     private lateinit var botonCalculo: Button
     private lateinit var botonAnadir: Button
     private lateinit var botonBorrar: Button
     private lateinit var botonVerAlimentos: Button
+    private lateinit var botonIrIngr: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,19 +52,22 @@ class MainActivity : AppCompatActivity() {
         botonBorrar = findViewById(R.id.botonBorrar)
         botonVerAlimentos = findViewById(R.id.botonVerAlimento)
 
+        botonIrIngr = findViewById(R.id.botonIrAnadirIngr)
         //****************************INICIALIZACION DE DAOS****************************************
         daoAlimento = DaoAlimento()
 
+
         //****************************EVENTO BOTONES ALIMENTOS*************************************
+        manejoCajas()
         botonCalculo.setOnClickListener { mostrarKcal() }
         botonAnadir.setOnClickListener { daoAlimento.anadirAlimento(alimento) }
         botonBorrar.setOnClickListener { daoAlimento.borrarAlimento(alimento) }
         botonVerAlimentos.setOnClickListener { daoAlimento.verAlimentos() }
+        botonIrIngr.setOnClickListener { anadirIngr() }
 
-        //***************ASIGNAMOS LAS VISTAS A LAS PROPIEDADES DE LA CLASE************************
     }
 
-    private fun mostrarKcal() {
+    private fun manejoCajas() {
         //Convertimos a los tipos de datos que correspondan y guardamos en variables
         //************************************************************************************
         val cajaNombre = nombreAlimento.text.toString()
@@ -70,7 +75,6 @@ class MainActivity : AppCompatActivity() {
         val cajaHidratos = cantidadHidratos.text.toString()
         val cajaLipidos = cantidadLipidos.text.toString()
         val cajaProteinas = cantidadProteinas.text.toString()
-
 
         //Instancia de la clase alimento para acceder a los métodos
         //********************************************************
@@ -81,7 +85,9 @@ class MainActivity : AppCompatActivity() {
             cajaLipidos.toDouble(),
             cajaProteinas.toDouble()
         )
+    }
 
+    private fun mostrarKcal() {
         cantidadKcal.text = alimento.calculaKcal().toString() + "kCal"
         //****************Borrado de contenido de las cajas de texto********************
         nombreAlimento.setText("")
@@ -89,7 +95,13 @@ class MainActivity : AppCompatActivity() {
         cantidadHidratos.setText("")
         cantidadLipidos.setText("")
         cantidadProteinas.setText("")
-       //Toast.makeText(this, "Recuerde rellenar los campos", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "Recuerde rellenar los campos", Toast.LENGTH_SHORT).show()
+    }
+
+    fun anadirIngr() {
+        val intent = Intent(this@MainActivity, MainActivity2::class.java)
+        intent.putExtra("alimento", alimento)
+        startActivity(intent)
     }
 }
 

@@ -8,6 +8,5 @@ class BDApp  {
     //COMPANION OBJECT: hace estático su contenido
     companion object {
         var listaAlimentos: MutableList<Alimento> = mutableListOf()
-        var listaIngredientes: MutableList<Ingrediente> = mutableListOf()
     }
 }

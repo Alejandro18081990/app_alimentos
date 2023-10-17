@@ -115,12 +115,25 @@
         app:layout_constraintTop_toTopOf="@+id/resultadoKcal" />
 
     <Button
+        android:id="@+id/botonIrAnadirIngr"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="127dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="30dp"
+        android:text="ir a ingr"
+        app:layout_constraintStart_toStartOf="@id/botonKiloCaloria"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/resultadoKcal"
+        />
+
+    <Button
         android:id="@+id/botonAnadir"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="77dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="200dp"
+        android:layout_marginEnd="77dp"
         android:text="Guardar alimento"
         app:layout_constraintBottom_toBottomOf="@+id/botonKiloCaloria"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,9 +144,9 @@
         android:id="@+id/botonBorrar"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="77dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="200dp"
+        android:layout_marginEnd="77dp"
         android:text="Borrar alimento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,50 +156,12 @@
         android:id="@+id/botonVerAlimento"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="77dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="200dp"
+        android:layout_marginEnd="77dp"
         android:text="Ver alimentos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botonBorrar" />
 
-
-    <Button
-        android:id="@+id/botonAnadirIngr"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="0dp"
-        android:text="Guardar ingr"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/botonKiloCaloria"
-        app:layout_constraintTop_toTopOf="@+id/resultadoKcal" />
-
-    <Button
-        android:id="@+id/botonBorrarIngr"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="0dp"
-        android:text="Borrar ingr"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/botonAnadir"
-        app:layout_constraintTop_toTopOf="@+id/botonAnadirIngr"
-        />
-
-    <Button
-        android:id="@+id/botonVerIngr"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="0dp"
-        android:text="Ver ingr"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/botonBorrar"
-        app:layout_constraintTop_toTopOf="@+id/botonBorrarIngr"
-        />
 </androidx.constraintlayout.widget.ConstraintLayout>
